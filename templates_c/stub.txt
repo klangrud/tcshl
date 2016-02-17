@@ -1,0 +1,2 @@
+This file is just a stub.  This file is just a holder, so that the folder templates_c can
+be uploaded to the file server.

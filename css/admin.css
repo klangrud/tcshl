@@ -1,0 +1,152 @@
+.fixedFloatEditForm
+{
+	background-color: #CCCCFF;
+	position: fixed;
+	left: 300px;
+	top: 200px;
+	border-style: ridge;
+	border-width: 10px;
+	border-color: black;	
+}
+
+#beginDiv
+{
+	background-color: #FFFF00;
+	color: #000000;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+#leveloneDiv
+{
+	background-color: #00FF00;
+	color: #000000;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+#leveltwoDiv
+{
+	background-color: #0000FF;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+#levelthreeDiv
+{
+	background-color: #FF0000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+#levelfourDiv
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+#adminRegisteredUserTableHead
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+.adminRegisteredUserTableOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.adminRegisteredUserTableEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+
+
+.adminPayManagerUserTableHead
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+.adminPayManagerUserTableOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.adminPayManagerUserTableEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+
+
+.adminSponsorTableHead
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+.adminSponsorTableOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.adminSponsorTableEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: top;	
+}
+
+
+.adminAwardsTableHead
+{
+	background-color: #000066;
+	color: #FFFFFF;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+.adminAwardsSubTableHead
+{
+	background-color: #000099;
+	color: #FFFFFF;
+	font-weight: bolder;
+	text-align: center;
+}
+
+.adminRegisterFormerPlayer
+{
+  height: 35px;
+}
+
+a.adminRegisterFormerPlayerLink:link {color: blue; text-decoration: none; }
+a.adminRegisterFormerPlayerLink:visited {color: purple; text-decoration: none; }
+a.adminRegisterFormerPlayerLink:hover {color: #FF0000; text-decoration: underline overline; }
+a.adminRegisterFormerPlayerLink:active {color: #00436A; }

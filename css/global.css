@@ -1,0 +1,413 @@
+#devBody {
+  background: url(@domain.name@/images/dev_bkg.gif) repeat;
+}
+
+#stageBody {
+  background: url(@domain.name@/images/stg_bkg.gif) repeat;
+}
+
+#globalBody
+{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+    font-family: Gill, Helvetica, sans-serif;  
+}
+
+#globalMobileBody
+{
+	width: 430px;
+    font-family: Gill, Helvetica, sans-serif;  
+}
+
+#globalMainBanner
+{
+    text-align: center;
+}
+
+.globalBannerInput
+{
+	background-color: #CCCCFF;
+	height: 15px;
+}
+
+.globalBannerSubmit
+{
+	border: ridge #336699;
+}
+
+#globalSiteUserLinks
+{
+	font-size: 12px;
+	color: #000000;
+	text-align: right;
+	border-bottom: thin solid #000066;
+}
+
+a.globalSiteUserLinks:active {color: #000066; text-decoration: none;}
+a.globalSiteUserLinks:hover {color: #000066; text-decoration: none;}
+a.globalSiteUserLinks:link {color: #000066; text-decoration: none;}
+a.globalSiteUserLinks:visited {color: #000066; text-decoration: none;}
+
+#globalMarquee
+{
+	clear: both;
+}
+
+div.clear {
+    clear: both; 
+}
+
+#globalBannerLinks
+{
+	background-color: #333366;
+	height: auto;
+	color: #FFFFFF;
+	font-weight: bold;
+	margin-top: -5px;	
+	padding: 4px;
+	font-size: 14px;
+	text-align: left;
+	clear: both;
+}
+
+a.globalBannerLinks:active {color: #FFFFFF; text-decoration: none;}
+a.globalBannerLinks:hover {color: #FFFFFF; text-decoration: none;}
+a.globalBannerLinks:link {color: #FFFFFF; text-decoration: none;}
+a.globalBannerLinks:visited {color: #FFFFFF; text-decoration: none;}
+
+#globalFooter
+{
+	text-align: center;
+}
+
+.globalError
+{
+	color: #FF0000;
+}
+
+.globalSuccess
+{
+	color: #00FF00;
+}
+
+.globalRed
+{
+	color: #FF0000;
+	font-size: large;
+}
+
+.globalGreen
+{
+	color: #00CC00;
+	font-size: large;	
+}
+
+.asterisk_red
+{
+	color: #FF0000;
+}
+
+
+.globalGreyStrike
+{
+	color: #999999;
+    text-decoration: line-through;
+}
+
+.globalMax
+{
+  width: 50%
+}
+
+.globalCenter
+{
+	text-align: center;
+}
+
+/* Use for tables that need a head format */
+.globalTableHead
+{
+	background-color: #333366;
+	color: #FFFFFF;
+	font-weight: bolder;
+	text-align: center;
+}
+
+/* Use for toggle buttons like view close div with javascript */
+.globalFormToggle
+{
+  color: #000000;
+  font-size: small;	
+}
+
+/* Use for links that are currently active */
+a#globalActiveLink:link {color: #0066CC; text-decoration: none; font-weight: bolder; }
+a#globalActiveLink:visited {color: #0066CC; text-decoration: none; font-weight: bolder; }
+a#globalActiveLink:hover {color: #0066CC; text-decoration: none; font-weight: bolder; }
+a#globalActiveLink:active {color: #0066CC; text-decoration: none; font-weight: bolder; }
+
+/* Use for links that are currently not active */
+a.globalNonActiveLink:link {color: #333366; text-decoration: none; }
+a.globalNonActiveLink:visited {color: #333366; text-decoration: none; }
+a.globalNonActiveLink:hover {color: #333366; text-decoration: underline overline; }
+
+.globalStatOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalStatEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalGameOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalGameEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalSubOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalSubEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalRegOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalRegEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalRosterOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalRosterEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalGameStat
+{
+	font-weight: bolder;
+	font-size: 14px;
+	text-align: center;
+}
+
+.globalSub
+{
+	font-weight: bolder;
+	font-size: 14px;
+	text-align: center;
+  white-space: nowrap;	
+}
+
+.globalReg
+{
+	font-weight: bolder;
+	font-size: 14px;
+	text-align: center;
+  white-space: nowrap;	
+}
+.globalGameScore
+{
+	font-weight: bolder;
+	font-size: 14px;
+	text-align: center;
+  white-space: nowrap;
+}
+
+.globalGameToday
+{
+	background-color: #FFFF00;
+	color: #0000FF;
+	font-size: 12px;
+}
+
+#globalStandingsHeader
+{
+	background-color: #99CCFF;
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.globalStandings
+{
+	text-align: center;
+}
+
+.globalNoWrap
+{
+	white-space: nowrap;
+}
+
+#globalDraftTable
+{
+
+}
+
+.globalTenDayScheduleTableHead
+{
+	background-color: #333366;
+	color: #FFFFFF;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+.globalGamePostponed
+{
+	background-color: #FFFFF0;  
+  color: #FF0000;
+  text-decoration: line-through;
+ 	font-size: 12px;
+}
+
+#globalSchedulepreTableHead
+{
+	background-color: #FFCCCC;
+	color: #000000;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+#globalScheduleseasonTableHead
+{
+	background-color: #33FF99;
+	color: #000000;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+#globalSchedulepostTableHead
+{
+	background-color: #CCCCFF;
+	color: #000000;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+.globalScheduleSectionHead
+{
+	background-color: #333399;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.globalStatSectionHead
+{
+	background-color: #99CCFF;
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.globalSubSectionHead
+{
+	background-color: #99CCFF;
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.globalRosterTableHead
+{
+	font-weight: bolder;
+	font-size: x-large;
+	text-align: center;
+}
+
+.globalRosterSectionHead
+{
+	background-color: #99CCFF;
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.globalOrderedListNoMargin
+{
+	margin:0;
+}
+
+.imglink
+{
+	border-style: none;
+}
+
+#globalDefaultTableHead
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+.globalDefaultTableHead
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bolder;
+	border: ridge #336699;
+}
+
+.globalDefaultTableOdd
+{
+	background-color: #FFFFF0;
+	color: #000000;
+	font-size: 12px;
+}
+
+.globalDefaultTableEven
+{
+	background-color: #CCCCCC;
+	color: #000000;
+	font-size: 12px;
+}
+
+/* footer links */
+a.footerlink:link {color: blue; text-decoration: none; }
+a.footerlink:visited {color: purple; text-decoration: none; }
+a.footerlink:hover {color: #D8DA04; text-decoration: underline overline; }
+a.footerlink:active {color: #00436A; }

@@ -1,0 +1,24 @@
+.userAdminLinksTableHeader
+{
+	background-color: #FFFFFF;
+	color: #330099;	
+  text-decoration: underline;
+  font-size: large;
+}
+
+.userLinkTableData
+{
+  padding-right: 20px;
+}
+
+.userLink
+{
+	background-color: #FFFFFF;
+	color: #330099;	
+  text-decoration: underline overline;	
+}
+
+a.userLink:link {color: #333333; text-decoration: none; }
+a.userLink:visited {color: #333333; text-decoration: none; }
+a.userLink:hover {color: #333333; text-decoration: underline overline; }
+a.userLink:active {color: #333333; }

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+
+<project name="TCSHL" default="run">
+	<description>TCSHL Project</description>
+
+	<!-- TODO: Remover delete file and uncomment this line in the clean target for production -->
+	<delete file="tmp.build.properties" />
+	
+	<property environment="env" />
+	
+  	<!-- Prompt user for a filter file -->
+  	<input message="Choose a property file.  Default is default.properties." addproperty="filterfile" defaultvalue="default.properties" />
+  	<echo message="Filter file chosen: ${filterfile}" />
+	
+	<!-- Set user filter file -->
+  	<filter filtersfile="filters/${filterfile}" />
+  	<copy file="build.properties" tofile="tmp.build.properties" filtering="true"/>
+  	<property file="tmp.build.properties" />	
+	
+	<!-- Create property for jar in the lib folder -->
+	<property name="ant-contrib.jar" location="${lib}/ant-contrib.jar" />
+  	<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="${ant-contrib.jar}" />
+
+<!--	<taskdef name="ftp" classname="org.apache.tools.ant.taskdefs.optional.net.FTP" /> -->
+
+	<!-- Determine correct directory separator -->
+	<if>
+	  <equals arg1="${os.name}" arg2="Linux" />
+		<then>
+	    <property name="class.sep" value=":" />
+			<property name="dir.sep" value="/" />
+		</then>
+		<else>
+      <property name="class.sep" value=";" />
+		  <property name="dir.sep" value="\" />    			
+		</else> 	
+  	</if>
+	
+
+	<!-- Print project information -->
+	<target name="init" description="Displays Project Information">
+		<echo>***************************************</echo>
+		<echo>*             TCSHL Project           *</echo>
+		<echo>*               Dnali Web             *</echo>
+		<echo>*         http://www.dnaliweb.com     *</echo>
+		<echo>*            Copyright 2007           *</echo>
+		<echo>*          All Rights Reserved        *</echo>
+		<echo>***************************************</echo>
+		<echo>*           PROJECT CONTACTS:         *</echo>
+		<echo>*           klangrud@gmail.com        *</echo>
+		<echo>***************************************</echo>
+		<echo>****</echo>
+		<echo>***</echo>
+		<echo>**</echo>
+		<echo>*</echo>
+		<echo>Local Environment: ${os.name} ${os.arch} ${os.version}</echo>
+	</target>
+
+	<!-- Delete files on server to ensure clean deploy -->
+	<target name="clean.server.files" depends="init" description="Cleans Web App Folder">
+		<!-- <delete dir="${web.server.docs}/${project}" /> -->
+	</target>	
+	
+	<!-- Build the project -->
+	<target name="build.project" depends="clean.server.files" description="Builds project into a build folder so that files can be manipulated before deploying to server">
+		<!-- Copy required files and folders to build directory -->		
+		<copy todir="${build}" filtering="true">
+		  <fileset dir="${src}">
+		  	<exclude name="filters/"/>
+		  	<exclude name="images/"/>
+		  	<exclude name="lib/"/>
+			 <exclude name="sql/"/>
+			<exclude name="static/"/>		  	
+		  	<exclude name="templates_c/*.txt"/>
+        <exclude name=".*"/>
+	      <exclude name="build.*"/>
+		  	<exclude name="${build}/"/>
+	      <exclude name="README.txt"/>
+		  	<exclude name="tmp.build.properties"/>
+		  </fileset>
+		</copy>
+		<copy todir="${build}/images" filtering="false">
+			<fileset dir="${src}/images" />
+		</copy>
+		<copy todir="${build}/static" filtering="false">
+			<fileset dir="${src}/static" />
+		</copy>		
+	</target>
+	
+	<!-- Manipulates the build where filtering alone does not work -->
+	<target name="manipulate.build" depends="build.project">
+		<!-- Manipulates the classpath file depending on the OS -->
+		<replace file="${build}/${engine}/classpath.php" token="@classpath_token@" value="${class.sep}${web.server.docs}"></replace>
+		<replace file="${build}/${engine}/classpath.php" token="/" value="${dir.sep}"></replace>		
+	</target>
+	
+	<!-- Deploy project to server from build directory -->
+	<target name="deploy.to.server" depends="manipulate.build" description="Moves Folders and Files to server from build folder">
+		<copy todir="${web.server.docs}/${project}">
+		  <fileset dir="${build}">	
+		  </fileset>	
+		</copy>
+	</target>
+	
+	<!-- Set permissions on the templates cache folder.  Project will break if this is not done on unix systems. -->
+	<target name="setperms" depends="deploy.to.server" description="Changes permissions on temlates_c folder, so that web server can write to it.">
+		<chmod perm="757" dir="${web.server.docs}/${project}/${template.cache}"></chmod>
+	</target>
+
+	<!-- Clean project files of files no longer needed.  ex. build and tmp.build.properties -->
+	<target name="clean.build.files" depends="setperms" description="Deletes build folder.  Not needed anymore.">
+		<delete dir="${build}" />
+		<!-- <delete file="tmp.build.properties" />  -->
+	</target>	
+	
+	<!-- Deploy project to production if needed-->
+	<target name="secure.push.to.prod" depends="clean.build.files" description="Changes permissions on temlates_c folder, so that web server can write to it.">	
+	
+	
+	<if>
+		<equals arg1="${environment}" arg2="stage" />
+		<then>
+			<property name="push.to.prod" value="true" />
+		</then>
+	<elseif>
+		<equals arg1="${environment}" arg2="prod" />
+		<then>
+			<property name="push.to.prod" value="true" />
+		</then>	
+	</elseif>
+	<else>
+		<property name="push.to.prod" value="false" />
+	</else>
+	</if>
+		
+	<if>
+	  <equals arg1="${push.to.prod}" arg2="true" />
+		<then>
+			<!-- FTP to prod -->
+			<!--
+			<echo>${hostusr}:password@${hosturl}:${web.server.docs}/${project}</echo>
+			<ftp server="${hosturl}" userid="${hostusr}" password="${hostpwd}" verbose="yes" passive="yes" depends="yes">
+				<fileset dir="${web.server.docs}/${project}" >
+					<exclude name="smarty/"/>
+				</fileset>
+			</ftp>
+			-->	
+			<!-- SCP to prod -->
+			<echo>${hostusr}:password@${hosturl}:${web.server.docs}/${project}</echo>
+			<scp todir="${hostusr}:${hostpwd}@${hosturl}:${web.server.docs}/${project}" trust="true" verbose="true" failonerror="false">
+				<fileset dir="${web.server.docs}/${project}" >
+					<exclude name="src/php/net/smarty/"/>
+					<exclude name="d7/"/>
+					<exclude name="drupal/"/>
+					<exclude name="drupal*/"/>
+				</fileset>
+			</scp>			
+		</then>	
+  	</if>	
+	</target>
+	
+	
+	<!-- Just a simple target that is easy to remember and kicks off the build. -->
+	<target name="run" depends="secure.push.to.prod"></target>
+
+</project>

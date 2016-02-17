@@ -1,0 +1,1 @@
+	<title>{$page_name}{$PAGE_NAME}</title>

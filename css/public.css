@@ -1,0 +1,131 @@
+/* Index Classes */
+.indexSubTitle
+{
+	font-weight: bold;
+	color: #736482;
+}
+
+/* Index Announcements */
+
+#publicIndexAnnouncements
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+.publicIndexAnnouncementsTitle
+{
+  color: #000066;
+  font-size: large;
+}
+
+.publicIndexAnnouncementsBody
+{
+	color: #000000;
+	text-indent: 20px
+}
+
+.publicIndexAnnouncementsUser
+{
+	color: #999999;
+	font-style: italic;
+	font-size: small;
+	text-indent: 20px
+}
+
+/* Index Ten Day Schedule */
+
+#publicIndexTenDaySchedule
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+/* Index Tentative Calendar */
+
+#publicIndexCalendar
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+/* Index Tentative Mission */
+
+#publicIndexMission
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+/* Index Tentative Board */
+
+#publicIndexBoard
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+/* Index Tentative Sponsorship */
+
+#publicIndexSponsorship
+{
+	border: solid #000066;
+	padding: 20px;
+}
+
+/* Team Page */
+#publicTeamBanner
+{
+  margin-top: 10px;  
+  width: 100%;
+  text-align: center;
+	font-size: 20pt;  
+}
+
+#publicTeamRecord
+{
+  width: 100%;
+  text-align: center;  
+}
+
+#publicTeamPicture
+{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;  
+  width: 75%;
+  border-width: medium;
+  border-style: solid; 
+  text-align: center;  
+}
+
+#publicTeamPictureCaption
+{
+  width: 100%;
+  text-align: center;
+}
+
+.publicAwardsTableHead
+{
+	background-color: #000066;
+	color: #FFFFFF;
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+}
+
+.publicAwardsSubTableHead
+{
+	background-color: #000099;
+	color: #FFFFFF;
+	font-weight: bolder;
+	text-align: center;
+}
+
+/* Board Member Page */
+.boardMember
+{
+	text-align: center;	
+	font-weight: bolder;
+	padding: 10px;	
+}

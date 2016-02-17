@@ -1,0 +1,1 @@
+{include file="public/includes/inc_keepactive.tpl"}

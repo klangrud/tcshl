@@ -1,0 +1,1 @@
+{include file="global/global_head.tpl"}
