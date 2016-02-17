@@ -75,7 +75,8 @@
         <exclude name=".*"/>
 	      <exclude name="build.*"/>
 		  	<exclude name="${build}/"/>
-	      <exclude name="README.txt"/>
+	      <exclude name="README.md"/>
+	      <exclude name="LICENSE"/>
 		  	<exclude name="tmp.build.properties"/>
 		  </fileset>
 		</copy>
