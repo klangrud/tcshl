@@ -60,22 +60,21 @@ define('LONG_SESSION_TIMEOUT', 60*60*24*365*10);  // About ten years (s*m*h*d*Y)
 /*
  * Email
  */
- define('VERIFICATION_EMAIL_SENDER', 'administrator@tcshl.com');
+ define('VERIFICATION_EMAIL_SENDER', 'administrator@example.com');
  define('VERIFICATION_EMAIL_SUBJECT', 'TCSHL.COM Account Verification');
  define('REG_EMAIL_SUBJECT', 'TCSHL League Registration Notification');
  define('RESET_PASSWORD_EMAIL_SUBJECT', 'TCSHL.COM Account Password Reset');
  
- define('ADMIN_EMAIL', 'administrator@tcshl.com');
- define('BOARD_EMAIL', 'board@tcshl.com');
- define('PAYMENT_EMAIL', 'payment@tcshl.com');
- define('REF_EMAIL', 'referees@tcshl.com');
- define('REG_EMAIL', 'registration@tcshl.com');
- define('REP_EMAIL', 'teamreps@tcshl.com');
- define('SITEREG_EMAIL', 'siteregistration@tcshl.com'); 
- define('STATS_EMAIL', 'stats@tcshl.com');
- define('TCSHL_EMAIL', 'tcshl@tcshl.com'); 
- //define('WEBMASTER_EMAIL', 'kurt.langrud@tcshl.com'); 
- define('WEBMASTER_EMAIL', 'klangrud@gmail.com'); 
+ define('ADMIN_EMAIL', 'administrator@example.com');
+ define('BOARD_EMAIL', 'board@example.com');
+ define('PAYMENT_EMAIL', 'payment@example.com');
+ define('REF_EMAIL', 'referees@example.com');
+ define('REG_EMAIL', 'registration@example.com');
+ define('REP_EMAIL', 'teamreps@example.com');
+ define('SITEREG_EMAIL', 'siteregistration@example.com'); 
+ define('STATS_EMAIL', 'stats@example.com');
+ define('TCSHL_EMAIL', 'tcshl@example.com'); 
+ define('WEBMASTER_EMAIL', 'webmaster@example.com'); 
  
 /*
  * Recaptcha

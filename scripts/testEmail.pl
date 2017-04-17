@@ -30,7 +30,7 @@ sub emailReport {
 
   my $subject = "Test Subject";
   my $body = "Test Body";
-  my $recips = "klangrud\@gmail.com";
+  my $recips = "development\@example.com";
 
 
 
