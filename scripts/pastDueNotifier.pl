@@ -734,7 +734,7 @@ if($type eq "TEAM") {
 
 
   # Following Line is for Debug Only
-  #$recips = "klangrud\@gmail.com";
+  #$recips = "development\@example.com";
 
 
 

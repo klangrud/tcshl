@@ -25,7 +25,7 @@
 			mail($this->get_recipients(), $this->get_subject(), $this->get_body(), 'From: '.$this->get_sender());
  		} else {
 			//Send email - All dev and stg emails can go to the following email
-			mail('kurt.langrud@tcshl.com', $this->get_subject(), $this->get_body(), 'From: '.$this->get_sender()); 			
+			mail('development@example.com', $this->get_subject(), $this->get_body(), 'From: '.$this->get_sender()); 			
  		}
  	}
  	
