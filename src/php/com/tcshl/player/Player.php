@@ -13,7 +13,12 @@
  	private $playerSkillLevel;
  	private $playerRegistrationID;
  	private $playerSeasonID;
+
+        // Misc Attributes
+        private $playerFormErrors;
+        private $playerFormSuccess;
  	
+        // Constructor
  	function __construct($playerID) {
  		$this->playerID=(int)$playerID;
  		if($this->playerID != 0) {
@@ -47,7 +52,7 @@
  		$query .= ' registrationId = '.$this->get_playerRegistrationID().',';
  		$query .= ' seasonId = '.$this->get_playerSeasonID();
  		$query .= ' WHERE playerID='.$this->get_playerID();
- 		  			
+
 		$result = mysql_query($query)
   					or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());  			
  	}
@@ -74,6 +79,105 @@
   					or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
  	} 	
  	
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        function formPreLoad($smarty) {
+   echo 'player sL: ';
+   echo $this->get_playerSkillLevel();
+   exit;
+          if($this->get_playerSkillLevel() == 1)
+            $smarty->assign('sl1','CHECKED');
+          if($this->get_playerSkillLevel() == 2)
+            $smarty->assign('sl2','CHECKED');
+          if($this->get_playerSkillLevel() == 3)
+            $smarty->assign('sl3','CHECKED');
+          if($this->get_playerSkillLevel() == 4)
+            $smarty->assign('sl4','CHECKED');
+          if($this->get_playerSkillLevel() == 5)
+            $smarty->assign('sl5','CHECKED');
+        }
+
+        // TeamFormReposts
+        public function formReposts($smarty) {
+                if ($_POST) {
+                        if ($_POST['playerFName']) {
+                                $smarty->assign('pfn', $_POST['playerFName']);
+                        }
+                        if ($_POST['playerLName']) {
+                                $smarty->assign('pln', $_POST['playerLName']);
+                        }
+                        if (isset($_POST['playerSkillLevel'])) {
+                          if ($_POST['playerSkillLevel'] == 1) {
+                                $smarty->assign('sl1', 'CHECKED');
+                          }
+                          else if ($_POST['playerSkillLevel'] == 2) {
+                                $smarty->assign('sl2', 'CHECKED');
+                          }
+                          else if ($_POST['playerSkillLevel'] == 3) {
+                                $smarty->assign('sl3', 'CHECKED');
+                          }
+                          else if ($_POST['playerSkillLevel'] == 4) {
+                                $smarty->assign('sl4', 'CHECKED');
+                          }
+                          else if ($_POST['playerSkillLevel'] == 5) {
+                                $smarty->assign('sl5', 'CHECKED');
+                          }
+                        }
+                }
+        }
+
+        // TeamFormValidation
+        public function formValidation() {
+                if ($_POST['playerFName']) {
+                        if (strlen($_POST['playerFName']) < 2) {
+                                $this->playerFormErrors[] = "Player First Name must be at least 2 characters long.";
+                        }
+                } else {
+                        $this->playerFormErrors[] = "Player First name is a required field";
+                }
+                if ($_POST['playerLName']) {
+                        if (strlen($_POST['playerLName']) < 2) {
+                                $this->playerFormErrors[] = "Player Last Name must be at least 2 characters long.";
+                        }
+                } else {
+                        $this->playerFormErrors[] = "Player Last name is a required field";
+                }
+
+                return $this->get_playerFormErrors();
+        }
+
+        //formProcessInsert
+        function formProcessInsert() {
+                $this->formProcess();
+                $this->insert_player();
+                return $this->get_playerFormErrors();
+
+        }
+
+        //formProcessUpdate
+        function formProcessUpdate() {
+                $this->formProcess();
+                $this->update_player();
+                return $this->get_playerFormErrors();
+        }
+
+        //formProcessUpdate
+        function formProcessDelete() {
+                $this->delete_player();
+                return $this->get_playerFormErrors();
+        }
+
+        //formProcess
+        private function formProcess() {
+                $this->set_playerFName($_POST['playerFName']);
+                $this->set_playerLName($_POST['playerLName']);
+                $this->set_playerSkillLevel($_POST['playerSkillLevel']);
+                $this->set_playerRegistrationID($_POST['playerRegistrationId']);
+                $this->set_playerSeasonID($_POST['season']);
+        }
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
  	public function get_playerID() {
  		return $this->playerID;
  	}
@@ -159,5 +263,15 @@
  		}
  		return $seasonNames;		
  	} 	
+
+        // Get $playerFormErrors
+        public function get_playerFormErrors() {
+                return (array) $this->playerFormErrors;
+        }
+
+        // Get $playerFormSuccess
+        public function get_playerFormSuccess() {
+                return (array) $this->playerFormSuccess;
+        }
  }
 ?>

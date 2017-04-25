@@ -25,11 +25,11 @@ insert into `seasons` values
 /*Data for the table `skilllevels` */
 
 insert into `skilllevels` values 
-(1,'Novice','Novice or Beginner.  Has never played before or has played very little.  Normally less than a years worth of experience.'),
-(2,'Beginner','Intermediate type of playing level.  About 2-3 years experience.'),
-(3,'Intermediate','Intermediate type of playing level.  About 2-3 years experience.'),
-(4,'Advanced','Advanced type play level.  3+ years experience.'),
-(5,'Elite','Elite type.  Played high school hockey, maybe some college.');
+(1,'N','Novice','Novice or Beginner.  Has never played before or has played very little.  Normally less than a years worth of experience.'),
+(2,'B','Beginner','Intermediate type of playing level.  About 2-3 years experience.'),
+(3,'I','Intermediate','Intermediate type of playing level.  About 2-3 years experience.'),
+(4,'A','Advanced','Advanced type play level.  3+ years experience.'),
+(5,'E','Elite','Elite type.  Played high school hockey, maybe some college.');
 
 /*Data for the table `dst` */
 
