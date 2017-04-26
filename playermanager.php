@@ -20,6 +20,7 @@ require_once('com/tcshl/player/Players.php');
 $smarty->assign('div_newobject_style', 'display: none');
 $smarty->assign('page_name', 'Player Manager');
 $smarty->assign('seasonSelect', select_season());
+$smarty->assign('skillLevelSelect', select_skill_level());
 
 // Handle posts
 if(isset ($_POST['action'])) {
@@ -86,8 +87,10 @@ if(count($PlayersArray) > 0) {
 	$smarty->assign('playerFName', array ());	
 	$smarty->assign('playerLName', array ());
 	$smarty->assign('playerSkillLevel', array ());	
+	$smarty->assign('playerSkillLevelSelect', array ());	
 	$smarty->assign('playerRegistrationID', array ());
 	$smarty->assign('playerSeason', array ());
+	$smarty->assign('playerCanDelete', array ());
 	$smarty->assign('div_editobject_style', array());
 	foreach($PlayersArray as $Player) {				
 		$count++;
@@ -95,8 +98,11 @@ if(count($PlayersArray) > 0) {
 		$smarty->append('playerFName', $Player->get_playerFName());
 		$smarty->append('playerLName', $Player->get_playerLName());
 		$smarty->append('playerSkillLevel', $Player->get_humanReadablePlayerSkillLevel());
+		$smarty->append('playerSkillLevelSelect', $Player->get_playerSkillLevelSelect());
 		$smarty->append('playerRegistrationID', $Player->get_playerRegistrationID());	
 		$smarty->append('playerSeason', $Player->get_humanReadableSeason());
+		$smarty->append('playerSeasonSelect', $Player->get_playerSeasonSelect());
+		$smarty->append('playerCanDelete', $Player->canDelete());
 		if(isset($player) && $player->get_playerID() > 0 && $player->get_playerID() == $Player->get_playerID() && count($player->get_playerFormErrors()) > 0 && count($player->get_playerFormSuccess()) == 0) {
 			$smarty->append('div_editobject_style', 'display: block');
 		} else {

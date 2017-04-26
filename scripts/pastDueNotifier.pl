@@ -11,9 +11,7 @@ use POSIX;
 
 #DB Connection
 
-#my $dbh = DBI->connect('DBI:mysql:tcshldbuser;host=localhost', 'tcshldbuser', 'Su7thaiG', { RaiseError => 1 }
-#my $dbh = DBI->connect('DBI:mysql:tcshldbuser;host=localhost', 'tcshldbuser', 'H0ckey07', { RaiseError => 1 }
-my $dbh = DBI->connect('DBI:mysql:tcshldbuser;host=tcshldbuser.db.2408816.hostedresource.com', 'tcshldbuser', 'H0ckey07', { RaiseError => 1 }
+my $dbh = DBI->connect('DBI:mysql:dbuser;host=myhost.example.com', 'dbuser', 'dbpass', { RaiseError => 1 }
                    ) || die "Could not connect to database: $DBI::errstr";
 
 my $sth = undef;
@@ -22,7 +20,7 @@ my $sth = undef;
 my $debug = "0";
 
 # Set email info
-my $from = 'TCSHL <tcshl@tcshl.com>';
+my $from = 'LEAGUE <league@example.com>';
 my $sendmail = '/usr/lib/sendmail';
 
 #Initialize Timestamps (Now, TodayBegin 00:00:00, TodayEnd 23:59:59)
@@ -212,15 +210,15 @@ if($altpay3 < $todayCheck) {
 my $TEAM_INFO = "Team Rep, \
     This is the payment report for your team.  The individuals listed here are late on a league payment \
 and will need to make arrangements before they can play in today's scheduled game.  NO PAY, NO PLAY. \
--TCSHL League Payments";
+-LEAGUE League Payments";
 my $GAME_INFO = "Game Referee, \
     This is the payment report for a game you are scheduled to ref.  The individuals listed here are late \
 on a league payment and will need to make arrangements before they can play in today's scheduled game.  NO PAY, NO PLAY. \
--TCSHL League Payments";
-my $ALL_INFO = "TCSHL Board Members, \
+-LEAGUE League Payments";
+my $ALL_INFO = "LEAGUE Board Members, \
     This is a payment report for all teams scheduled to play today.  The individuals listed on here are late on a \
 league payment.  They must make arrangements before they can play in today's scheduled game.  NO PAY, NO PLAY.\
--TCSHL League Payments";
+-LEAGUE League Payments";
 
 
 # Generate Reports
@@ -676,7 +674,7 @@ sub emailReport {
   my $type = shift;
   my $id = shift;  
   my $gameNumber = shift;
-  my $recips = "tcshl\@tcshl.com,";
+  my $recips = "league\@example.com,";
 
   if($type eq "TEAM") {
 $sth = $dbh->prepare( <<EOSQL
@@ -713,20 +711,20 @@ EOSQL
       }
     }
   } else {
-    $recips .= "board\@tcshl.com,"; 
+    $recips .= "board\@example.com,"; 
   }
 
 
-  $recips .= "tcshl\@tcshl.com";
+  $recips .= "league\@example.com";
 
 if($type eq "TEAM") {
-  $subject = "TCSHL Automatic Team Payment Report - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
+  $subject = "LEAGUE Automatic Team Payment Report - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
   $body = $TEAM_INFO."\n\n".$body;
 } elsif($type eq "GAME") {
-  $subject = "TCSHL Automatic Payment Report (Game ".$gameNumber.") - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
+  $subject = "LEAGUE Automatic Payment Report (Game ".$gameNumber.") - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
   $body = $GAME_INFO."\n\n".$body;
 } else {
-  $subject = "TCSHL Automatic Payment Report - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
+  $subject = "LEAGUE Automatic Payment Report - ".strftime '%a %b %e, %Y',localtime($currentDateEpoch);
   $body = $ALL_INFO."\n\n".$body;
 }
 

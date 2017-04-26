@@ -18,17 +18,17 @@
   <li>
     <b>PAYMENTS</b> can be given to any board member or sent to the following address:
     <br />
-	TCSHL c/o Denise Anderson
+	League Name c/o League Tresurer
 	<br />
-	4320 West Highway 30
+	123 Any Street
 	<br />
-	Kearney, NE 68845
+	Any Town, USA 00000
   </li>
   <!-- 
   <li>
     <b>Proof of USA Hockey Registration</b> can be given to any board member, sent to the above mailing address or sent to the following email address:
     <br />
-	usaregistration@tcshl.com
+	usaregistration@example.com
   </li>
   -->
   {if $registrationPage}

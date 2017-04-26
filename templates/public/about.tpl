@@ -67,13 +67,13 @@ Substitutions should be coordinated through the Team Rep who will replace player
 
 <h2>Scorekeeping and Refereeing</h2>
 
-TCSHL is looking for Referees and Scorekeepers.  Referees will be paid based on an experience pay scale.  If you are interested in being a Referee contact Randie May.  One scorekeeper will be scheduled for every game and will be paid $5.00 per game. 
+TCSHL is looking for Referees and Scorekeepers.  Referees will be paid based on an experience pay scale.  If you are interested in being a Referee contact Head Ref.  One scorekeeper will be scheduled for every game and will be paid $5.00 per game. 
 
 <h2>TCSHL Rules Adjustments</h2>
 
 The TCSHL, as a non-check league, uses the most current USA Hockey rules. 
 <br />
-League Rules are available online at <a href="http://www.tcshl.com">www.tcshl.com</a>.
+League Rules are available online at <a href="http://www.example.com">www.example.com</a>.
 <br />
 Rule books are available online at <a href="http://www.usahockey.com">www.usahockey.com</a>.
 <br />

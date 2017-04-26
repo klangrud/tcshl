@@ -11,10 +11,10 @@
 	</tr>
 	{section name=player loop=$PlayerID}
 		<tr>
-			<td><a href="/viewplayer.php?playerid={$PlayerID[player]}">{$PlayerID[player]}</a></td>
+			<td><a href="viewplayer.php?playerid={$PlayerID[player]}">{$PlayerID[player]}</a></td>
 			<td>{$PlayerName[player]}</td>
 			<td>{$CurrentSkillLevel[player]}</td>
-			<td><a href="/registrantdetails.php?registrantid={$CurrentRegistrationID[player]}">{$CurrentRegistrationID[player]}</a></td>
+			<td><a href="registrantdetails.php?registrantid={$CurrentRegistrationID[player]}">{$CurrentRegistrationID[player]}</a></td>
 			<td>{$LastActiveSeason[player]}</td>
 		</tr>
 	{/section}

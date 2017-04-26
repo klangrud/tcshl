@@ -15,27 +15,43 @@ define('PAGE_TYPE', 'ADMIN');
 require ('engine/common.php');
 
 if(this_season_has_teams()) {
-
 	$playerid = 0;
 	$playerName = "";
 	$jersey1 = 0;
 	$jersey2 = 0;
 	$jersey3 = 0;
+	$manual = 0;
+        $location = 'players';
 	if($_GET || $_POST) {
 		if(isset($_GET['playerid']) && $_GET['playerid'] > 0) {
 			$playerid = $_GET['playerid'];
 		} else if(isset($_POST['playerid']) && $_POST['playerid'] > 0) {
 			$playerid = $_POST['playerid'];
 		} else {
-			header("Location: players.php");
+        	        header("Location: $location.php");
+		}
+		if(isset($_GET['manual']) && $_GET['manual'] > 0) {
+			$manual = $_GET['manual'];
+		} else if(isset($_POST['manual']) && $_POST['manual'] > 0) {
+			$manual = $_POST['manual'];
+		}
+		if(isset($_GET['location'])) {
+			$location = $_GET['location'];
+		} else if(isset($_POST['location'])) {
+			$location = $_POST['location'];
 		}
 		//Set players jersey choices
-		set_player_info();
+                if($manual > 0) {
+		  set_manual_player_info();
+                } else {
+		  set_player_info();
+                }
 		$smarty->assign('playerid', $playerid);
 		$smarty->assign('playerName', $playerName);
 		$smarty->assign('jersey1', $jersey1);
 		$smarty->assign('jersey2', $jersey2);
 		$smarty->assign('jersey3', $jersey3);
+		$smarty->assign('location', $location);
 		setup_jersey_warning_info();
 		setup_team_already_on();
 		setup_team_select();
@@ -45,7 +61,7 @@ if(this_season_has_teams()) {
 
 	if ((isset ($_POST['action'])) && ($_POST['action'] == "Add Player to Roster")) {
 		process_assignplayerteam_form();
-		header("Location: players.php");	
+        	header("Location: $location.php");
 	}
 
 } else {
@@ -53,7 +69,8 @@ if(this_season_has_teams()) {
 	$smarty->assign('season', get_season_name($SEASON));
 } // If teams exist for this season
 
-$smarty->assign('page_name', 'Assign Player to Team');
+$page_name = 'Assign '.$playerName.' to Team';
+$smarty->assign('page_name', $page_name);
 
 // Build the page
 require ('global_begin.php');
@@ -96,6 +113,28 @@ function this_season_has_teams() {
 }
 
 /*
+ * Manual player addition.  Not based on registration.
+ */
+function set_manual_player_info() {
+  global $SEASON;
+  global $playerid;
+  global $playerName;
+  global $Link;
+
+  $columns = 'playerFName,playerLName';  
+
+  $select = 'SELECT '.$columns.' FROM '.PLAYER.' WHERE '.PLAYER.'.playerID='.$playerid.' AND '.PLAYER.'.seasonId='.$SEASON;
+
+  $result = mysql_query($select, $Link)
+     or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
+
+  if($result && mysql_num_rows($result) > 0) {
+    $player = mysql_fetch_assoc($result);
+    $playerName = $player['playerFName'].' '.$player['playerLName'];
+  }
+}
+
+/*
  * Set this players jersey choices
  */
 function set_player_info() {
@@ -105,7 +144,7 @@ function set_player_info() {
 	global $jersey1;
 	global $jersey2;
 	global $jersey3;
-  global $Link;
+        global $Link;
 	
 	$jerseySelectColumns = 'playerFName,playerLName,jerseyNumberOne,jerseyNumberTwo,jerseyNumberThree';
 	$jerseySelect = 'SELECT '.$jerseySelectColumns.' FROM '.PLAYER.' JOIN '.REGISTRATION.' ON '.PLAYER.'.playerId = '.REGISTRATION.'.playerId WHERE '.PLAYER.'.playerId='.$playerid.' AND '.REGISTRATION.'.seasonId='.$SEASON;

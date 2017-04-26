@@ -14,7 +14,7 @@ define('PAGE_TYPE', 'PUBLIC');
 require ('engine/common.php');
 
 $Title = "Page Cannot Be Found";
-$Error = "We're sorry, but the page you are looking for cannot be accessed. It may have been removed, had its name changed or may be temporarily unavailable. Please <a href=\"index.php\">click here</a> to continue. <br /><br /> If this problem persists, please notify <a href=\"mailto:webmaster@tcshl.com\">webmaster@tcshl.com</a>.";
+$Error = "We're sorry, but the page you are looking for cannot be accessed. It may have been removed, had its name changed or may be temporarily unavailable. Please <a href=\"index.php\">click here</a> to continue. <br /><br /> If this problem persists, please notify <a href=\"mailto:webmaster@example.com\">webmaster@example.com</a>.";
 
 $smarty->assign('page_name', 'TCSHL::Server Error');
 $smarty->assign('404Title', $Title);

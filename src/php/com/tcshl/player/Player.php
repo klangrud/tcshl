@@ -11,6 +11,7 @@
  	private $playerFName;
  	private $playerLName;
  	private $playerSkillLevel;
+ 	private $playerSkillLevelSelect;
  	private $playerRegistrationID;
  	private $playerSeasonID;
 
@@ -73,28 +74,35 @@
  	} 
  	
  	function delete_player() {
-		$query = 'DELETE FROM '.PLAYER.' WHERE playerID='.$this->get_playerID();
+                if($this->canDelete()) {
+                        $query = 'DELETE FROM '.PLAYER.' WHERE playerID='.$this->get_playerID();
 
-		$result = mysql_query($query)
-  					or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
+                        mysql_query($query)
+                                                or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
+
+                        if(validResult()) {
+                                $this->teamFormSuccess[]='Player '.$this->get_playerFName().' '.$this->get_playerLName().' deleted successfully!';
+                        } else {
+                                $this->teamFormErrors[]='Player '.$this->get_playerFName().' '.$this->get_playerLName().' NOT deleted!  Try again or notify TCSHL.com administrator.';
+                        }
+                } else {
+                        $this->teamFormErrors[]='Player '.$this->get_playerFName().' '.$this->get_playerLName().' CANNOT be deleted as they belong to a team!';
+                }
+
  	} 	
  	
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Determines if a player can be deleted
+        public function canDelete() {
+                $query = 'SELECT * FROM '.ROSTERSOFTEAMSOFSEASONS.' WHERE playerID='.$this->get_playerID();
 
-        function formPreLoad($smarty) {
-   echo 'player sL: ';
-   echo $this->get_playerSkillLevel();
-   exit;
-          if($this->get_playerSkillLevel() == 1)
-            $smarty->assign('sl1','CHECKED');
-          if($this->get_playerSkillLevel() == 2)
-            $smarty->assign('sl2','CHECKED');
-          if($this->get_playerSkillLevel() == 3)
-            $smarty->assign('sl3','CHECKED');
-          if($this->get_playerSkillLevel() == 4)
-            $smarty->assign('sl4','CHECKED');
-          if($this->get_playerSkillLevel() == 5)
-            $smarty->assign('sl5','CHECKED');
+                $result = mysql_query($query)
+                                        or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
+
+                if($result && mysql_num_rows($result) > 0) {
+                        return false;
+                } else {
+                        return true;
+                }
         }
 
         // TeamFormReposts
@@ -105,23 +113,6 @@
                         }
                         if ($_POST['playerLName']) {
                                 $smarty->assign('pln', $_POST['playerLName']);
-                        }
-                        if (isset($_POST['playerSkillLevel'])) {
-                          if ($_POST['playerSkillLevel'] == 1) {
-                                $smarty->assign('sl1', 'CHECKED');
-                          }
-                          else if ($_POST['playerSkillLevel'] == 2) {
-                                $smarty->assign('sl2', 'CHECKED');
-                          }
-                          else if ($_POST['playerSkillLevel'] == 3) {
-                                $smarty->assign('sl3', 'CHECKED');
-                          }
-                          else if ($_POST['playerSkillLevel'] == 4) {
-                                $smarty->assign('sl4', 'CHECKED');
-                          }
-                          else if ($_POST['playerSkillLevel'] == 5) {
-                                $smarty->assign('sl5', 'CHECKED');
-                          }
                         }
                 }
         }
@@ -171,12 +162,10 @@
         private function formProcess() {
                 $this->set_playerFName($_POST['playerFName']);
                 $this->set_playerLName($_POST['playerLName']);
-                $this->set_playerSkillLevel($_POST['playerSkillLevel']);
+                $this->set_playerSkillLevel($_POST['skilllevel']);
                 $this->set_playerRegistrationID($_POST['playerRegistrationId']);
                 $this->set_playerSeasonID($_POST['season']);
         }
-
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  	public function get_playerID() {
  		return $this->playerID;
@@ -263,6 +252,16 @@
  		}
  		return $seasonNames;		
  	} 	
+
+        // Get player skill level select menu
+ 	public function get_playerSkillLevelSelect() {
+ 		return select_skill_level($this->playerSkillLevel);
+ 	} 
+
+        // Get player season select menu
+ 	public function get_playerSeasonSelect() {
+ 		return select_season($this->playerSeasonID);
+ 	} 
 
         // Get $playerFormErrors
         public function get_playerFormErrors() {

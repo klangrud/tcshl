@@ -31,7 +31,7 @@ Fun, exercise, and development of skills are the goal. One referee will drop the
  
 The cost will be $120.00 for the 10 games (game jerseys included) and must be registered with USA Hockey (approximately $38.00 a year)
  
-Please contact myself (Randie May) at randie.may@tcshl.com or call 308-440-2382. Or feel free to speak with ANY of our TCSHL board members (see TCSHL website).
+Please contact myself (Some Name) at some.name@example.com or call 555-555-5555. Or feel free to speak with ANY of our TCSHL board members (see TCSHL website).
  
 Help will be given on how to obtain equipment, dressing, basic skills, etc as needed for the NEW hockey player.
  

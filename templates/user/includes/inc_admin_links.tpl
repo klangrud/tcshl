@@ -88,8 +88,8 @@
   <td class="userLinkTableData">
   <!--  Player Administration -->
 	  <ul>
-		<li><a href="playermanager.php" class="userLink">Player Manager</a></li>
-		<li><a href="players.php" class="userLink">Registered Player Manager</a></li>
+		<li><a href="playermanager.php" class="userLink">Player Manager - Manual Process</a></li>
+		<li><a href="players.php" class="userLink">Player Manager via Registration</a></li>
 		<li><a href="viewplayers.php" class="userLink">All-Time Player List</a></li>		
 	  </ul> 
   </td>    
