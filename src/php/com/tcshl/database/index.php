@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html;
 		charset=iso-8859-1" />
 		<title>Test</title>
-		<?php include("/var/www/kurtl/tcshl/engine/select_functions.php"); ?>
+		<?php include("/var/www/html/league/engine/select_functions.php"); ?>
 	</head>
 	<body>
 		<?php
