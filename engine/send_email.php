@@ -28,7 +28,7 @@ function send_bcc_email($emailto_array = array(), $subject = "", $message = "") 
 
  	  // Debug - If email does not send, need to send webmaster an email so they can debug it.
           if(!$emailSent || get_site_variable_value("DEBUG_EMAIL") == 1) {
-            $debugSubject = "EmailManager tcshl.com - debug info";
+            $debugSubject = "EmailManager example.com - debug info";
             $debugFrom = TCSHL_EMAIL;
 	    $debugReplyTo = WEBMASTER_EMAIL;
 	    $debugHeaders = "From: ".$debugFrom. "\r\n";

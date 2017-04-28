@@ -29,6 +29,7 @@
 	
     <form method="post" action="assignplayerteam.php">
     <input type="hidden" name="playerid" value="{$playerid}" />
+    <input type="hidden" name="location" value="{$location}" />
     <label for="candidateTeams">Team: </label>
     <select name="candidateTeams">    
 		{section name=team loop=$teamCandidateID}

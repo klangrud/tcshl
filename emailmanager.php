@@ -141,15 +141,15 @@ function get_every_address() {
   $select .= ' WHERE eMail NOT IN ('.$subQuery.')';
   $select .= ' AND eMail IS NOT NULL';
   $select .= ' AND eMail != ""';
-  $select .= ' AND eMail != "administrator@tcshl.com"';
-  $select .= ' AND eMail != "board@tcshl.com"';
-  $select .= ' AND eMail != "payment@tcshl.com"';
-  $select .= ' AND eMail != "referees@tcshl.com"';
-  $select .= ' AND eMail != "registration@tcshl.com"';
-  $select .= ' AND eMail != "teamreps@tcshl.com"';
-  $select .= ' AND eMail != "siteregistration@tcshl.com"';
-  $select .= ' AND eMail != "stats@tcshl.com"';
-  $select .= ' AND eMail != "tcshl@tcshl.com"';
+  $select .= ' AND eMail != "administrator@example.com"';
+  $select .= ' AND eMail != "board@example.com"';
+  $select .= ' AND eMail != "payment@example.com"';
+  $select .= ' AND eMail != "referees@example.com"';
+  $select .= ' AND eMail != "registration@example.com"';
+  $select .= ' AND eMail != "teamreps@example.com"';
+  $select .= ' AND eMail != "siteregistration@example.com"';
+  $select .= ' AND eMail != "stats@example.com"';
+  $select .= ' AND eMail != "tcshl@example.com"';
   $select .= ' ORDER BY eMail';
   
   $everyEmail = array_merge(emails($subQuery),emails($select));
@@ -275,7 +275,7 @@ function email_message($emailAddresses = "", $subject = "", $message = "") {
 
  	// If email does not send, need to send webmaster an email so he can debug it.
         if(!$emailSent || get_site_variable_value("DEBUG_EMAIL") == 1) {
-          $debugSubject = "EmailManager tcshl.com - debug info";
+          $debugSubject = "EmailManager example.com - debug info";
           $debugFrom = TCSHL_EMAIL;
 	  $debugReplyTo = WEBMASTER_EMAIL;
 	  $debugHeaders = "From: ".$debugFrom. "\r\n";

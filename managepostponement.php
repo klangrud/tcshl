@@ -315,7 +315,7 @@ function get_addresses() {
 		
 		
 	
-	$emailAddresses .= 'administrator@tcshl.com';
+	$emailAddresses .= 'administrator@example.com';
 		
 	return $emailAddresses;
 }

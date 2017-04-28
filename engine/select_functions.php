@@ -315,6 +315,33 @@ function select_season() {
 	return $season_select;	
 }
 
+// *************************SKILL MENU*************************
+function select_skill_level($skill_selected = 3) {
+	global $Link;
+	#global $SEASON;
+	
+	$select = 'SELECT * FROM '.SKILLLEVELS.' ORDER BY skillLevelID';
+	
+	$result = mysql_query($select, $Link)
+		or die("sp_clubs (Line " . __LINE__ . "): " . mysql_errno() . ": " . mysql_error());
+	
+	
+	$skill_select = '<select name="skilllevel" id="skilllevel">';
+	if($result && mysql_num_rows($result) > 0) {
+		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			if($row['skillLevelID'] == $skill_selected) {
+				$skill_select .= '<option value="'.$row['skillLevelID'].'" selected="selected">'.$row['skillLevelName'].'</option>';
+			} else {
+				$skill_select .= '<option value="'.$row['skillLevelID'].'">'.$row['skillLevelName'].'</option>';
+			}
+		}
+	} else {
+		$skill_select .= '<option></option>';
+	}
+	$skill_select .= '</select>';
+	return $skill_select;	
+}
+
 // *************************PRIORITY MENU*************************
 function select_priority($priority = "") {
 	if(isset($priority) && $priority > 0) {

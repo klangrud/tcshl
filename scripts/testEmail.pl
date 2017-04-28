@@ -14,7 +14,7 @@ use POSIX;
 my $debug = "0";
 
 # Set email info
-my $from = 'TCSHL <tcshl@tcshl.com>';
+my $from = 'LEAGUE <tcshl@example.com>';
 my $smtp = 'relay-hosting.secureserver.net';
 
 emailReport();
