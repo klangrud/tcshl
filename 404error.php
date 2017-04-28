@@ -29,4 +29,3 @@ require ('global_end.php');
  * Setup announcements
 */
 ?>
-
